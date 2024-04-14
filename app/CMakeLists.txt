@@ -1,7 +1,7 @@
 set(EXE_SOURCES "main.cpp")
 
 add_executable(${EXE_NAME} ${EXE_SOURCES})
-target_link_libraries(${EXE_NAME} PUBLIC ${LIB_IMAGE_FILTER_NAME})
+target_link_libraries(${EXE_NAME} PUBLIC ${LIB_IMAGE_FILTER_NAME} CLI11::CLI11)
 
 if(${ENABLE_WARNINGS})
     target_set_warnings(

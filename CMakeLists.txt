@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.22.1)
 project(
     ImageFilter_CUDA
     VERSION 1.0.0
-    LANGUAGES C CXX)
+    LANGUAGES C CXX CUDA)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -45,12 +45,38 @@ if(ENABLE_LTO)
 endif()
 
 
+# Fetch from git
 include(FetchContent)
+
+FetchContent_Declare(
+        opencv
+        GIT_REPOSITORY https://github.com/opencv/opencv.git
+        GIT_TAG        4.9.0
+)
+FetchContent_GetProperties(opencv)
+if (NOT opencv_POPULATED)
+    FetchContent_Populate(opencv)
+endif ()
+FetchContent_MakeAvailable(opencv)
+find_package(OpenCV REQUIRED)
+
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
 )
 FetchContent_MakeAvailable(googletest)
+
+FetchContent_Declare(
+    cli11
+    GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git
+    GIT_TAG v2.4.1 
+)
+FetchContent_MakeAvailable(cli11)
+
+set(CUDA_TOOLKIT_ROOT_DIR "/usr/local/cuda-12.3")
+find_package(CUDA REQUIRED)
+include_directories(include ${CUDA_INCLUDE_DIRS})
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-O3 -gencode arch=compute_61,code=sm_61)
 
 
 # Subdirectories
