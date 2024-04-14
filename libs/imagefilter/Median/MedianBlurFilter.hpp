@@ -4,11 +4,12 @@
 #include "AbstractFilter.hpp"
 
 
-class MedianBlurFilter : public AbstractFilter {
+class MedianBlurFilter : public AbstractFilter
+{
 public:
     MedianBlurFilter();
-    MedianBlurFilter(const MedianBlurFilter& other);
-    MedianBlurFilter& operator=(const MedianBlurFilter& other);
+    MedianBlurFilter(const MedianBlurFilter &other);
+    MedianBlurFilter &operator=(const MedianBlurFilter &other);
     ~MedianBlurFilter();
 
     bool apply();

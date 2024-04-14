@@ -4,11 +4,12 @@
 #include "AbstractFilter.hpp"
 
 
-class LaplacianFilter : public AbstractFilter {
+class LaplacianFilter : public AbstractFilter
+{
 public:
     LaplacianFilter();
-    LaplacianFilter(const LaplacianFilter& other);
-    LaplacianFilter& operator=(const LaplacianFilter& other);
+    LaplacianFilter(const LaplacianFilter &other);
+    LaplacianFilter &operator=(const LaplacianFilter &other);
     ~LaplacianFilter();
 
     bool apply();

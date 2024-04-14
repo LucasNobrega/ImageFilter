@@ -3,13 +3,14 @@
 
 #include "AbstractFilterCUDA.hpp"
 
-class MedianBlurFilterCUDA : public AbstractFilterCUDA {
+class MedianBlurFilterCUDA : public AbstractFilterCUDA
+{
 public:
-    MedianBlurFilterCUDA(unsigned int filter_kernel_width, 
-                         unsigned int filter_kernel_height, 
-                         unsigned int cuda_block_size);
-    MedianBlurFilterCUDA(const MedianBlurFilterCUDA& other);
-    MedianBlurFilterCUDA& operator=(const MedianBlurFilterCUDA& other);
+    MedianBlurFilterCUDA(unsigned int filter_kernel_width,
+                         unsigned int filter_kernel_height,
+                         CUDARunTimeConfig cuda_run_time_config);
+    MedianBlurFilterCUDA(const MedianBlurFilterCUDA &other);
+    MedianBlurFilterCUDA &operator=(const MedianBlurFilterCUDA &other);
     ~MedianBlurFilterCUDA();
 };
 
