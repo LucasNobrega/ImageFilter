@@ -3,13 +3,14 @@
 
 #include "AbstractFilterCUDA.hpp"
 
-class BoxFilterCUDA : public AbstractFilterCUDA {
+class BoxFilterCUDA : public AbstractFilterCUDA
+{
 public:
-    BoxFilterCUDA ( unsigned int filter_kernel_width, 
-                    unsigned int filter_kernel_height, 
-                    unsigned int cuda_block_size);
-    BoxFilterCUDA(const BoxFilterCUDA& other);
-    BoxFilterCUDA& operator=(const BoxFilterCUDA& other);
+    BoxFilterCUDA(unsigned int filter_kernel_width,
+                  unsigned int filter_kernel_height,
+                  CUDARunTimeConfig cuda_run_time_config);
+    BoxFilterCUDA(const BoxFilterCUDA &other);
+    BoxFilterCUDA &operator=(const BoxFilterCUDA &other);
     ~BoxFilterCUDA();
 };
 

@@ -4,16 +4,16 @@
 #include "AbstractFilter.hpp"
 
 
-class SobelEdgeDetectionFilter : public AbstractFilter {
+class SobelEdgeDetectionFilter : public AbstractFilter
+{
 public:
     SobelEdgeDetectionFilter();
-    SobelEdgeDetectionFilter(const SobelEdgeDetectionFilter& other);
-    SobelEdgeDetectionFilter& operator=(const SobelEdgeDetectionFilter& other);
+    SobelEdgeDetectionFilter(const SobelEdgeDetectionFilter &other);
+    SobelEdgeDetectionFilter &operator=(const SobelEdgeDetectionFilter &other);
     ~SobelEdgeDetectionFilter();
 
     bool apply();
     bool read(std::string input) override;
-
 };
 
 

@@ -3,7 +3,8 @@
 
 #include "AbstractFilterCUDA.hpp"
 
-class LaplacianFilterCUDA : public AbstractFilterCUDA {
+class LaplacianFilterCUDA : public AbstractFilterCUDA
+{
 public:
     LaplacianFilterCUDA(int filter_kernel_width,
                         int filter_kernel_height,
@@ -11,10 +12,10 @@ public:
                         int aperture,
                         double scale,
                         double delta,
-                        int cuda_block_size);
+                        CUDARunTimeConfig cuda_run_time_config);
 
-    LaplacianFilterCUDA(const LaplacianFilterCUDA& other);
-    LaplacianFilterCUDA& operator=(const LaplacianFilterCUDA& other);
+    LaplacianFilterCUDA(const LaplacianFilterCUDA &other);
+    LaplacianFilterCUDA &operator=(const LaplacianFilterCUDA &other);
     ~LaplacianFilterCUDA();
 
 private:

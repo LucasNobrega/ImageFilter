@@ -3,13 +3,14 @@
 
 #include "AbstractFilterCUDA.hpp"
 
-class SharpeningFilterCUDA : public AbstractFilterCUDA {
+class SharpeningFilterCUDA : public AbstractFilterCUDA
+{
 public:
     SharpeningFilterCUDA(unsigned int filter_kernel_width,
                          unsigned int filter_kernel_height,
-                         unsigned int cuda_block_size);
-    SharpeningFilterCUDA(const SharpeningFilterCUDA& other);
-    SharpeningFilterCUDA& operator=(const SharpeningFilterCUDA& other);
+                         CUDARunTimeConfig cuda_run_time_config);
+    SharpeningFilterCUDA(const SharpeningFilterCUDA &other);
+    SharpeningFilterCUDA &operator=(const SharpeningFilterCUDA &other);
     ~SharpeningFilterCUDA();
 };
 

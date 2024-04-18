@@ -4,11 +4,12 @@
 #include "AbstractFilter.hpp"
 
 
-class SharpeningFilter : public AbstractFilter {
+class SharpeningFilter : public AbstractFilter
+{
 public:
     SharpeningFilter();
-    SharpeningFilter(const SharpeningFilter& other);
-    SharpeningFilter& operator=(const SharpeningFilter& other);
+    SharpeningFilter(const SharpeningFilter &other);
+    SharpeningFilter &operator=(const SharpeningFilter &other);
     ~SharpeningFilter();
 
     bool apply();

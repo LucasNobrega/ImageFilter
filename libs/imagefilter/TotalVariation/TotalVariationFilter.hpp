@@ -4,11 +4,12 @@
 #include "AbstractFilter.hpp"
 
 
-class TotalVariationFilter : public AbstractFilter {
+class TotalVariationFilter : public AbstractFilter
+{
 public:
     TotalVariationFilter();
-    TotalVariationFilter(const TotalVariationFilter& other);
-    TotalVariationFilter& operator=(const TotalVariationFilter& other);
+    TotalVariationFilter(const TotalVariationFilter &other);
+    TotalVariationFilter &operator=(const TotalVariationFilter &other);
     ~TotalVariationFilter();
 
     bool read(std::string input) override;

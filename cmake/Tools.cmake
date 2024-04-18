@@ -46,11 +46,13 @@ function(add_clang_format_target)
     endif()
     file(GLOB_RECURSE CMAKE_FILES_CC "*/*.cc")
     file(GLOB_RECURSE CMAKE_FILES_CPP "*/*.cpp")
+    file(GLOB_RECURSE CMAKE_FILES_CU "*/*.cu")
     file(GLOB_RECURSE CMAKE_FILES_H "*/*.h")
     file(GLOB_RECURSE CMAKE_FILES_HPP "*/*.hpp")
     set(CPP_FILES
         ${CMAKE_FILES_CC}
         ${CMAKE_FILES_CPP}
+        ${CMAKE_FILES_CU}
         ${CMAKE_FILES_H}
         ${CMAKE_FILES_HPP})
     list(

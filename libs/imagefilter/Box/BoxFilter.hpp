@@ -4,11 +4,12 @@
 #include "AbstractFilter.hpp"
 
 
-class BoxFilter : public AbstractFilter {
+class BoxFilter : public AbstractFilter
+{
 public:
     BoxFilter();
-    BoxFilter(const BoxFilter& other);
-    BoxFilter& operator=(const BoxFilter& other);
+    BoxFilter(const BoxFilter &other);
+    BoxFilter &operator=(const BoxFilter &other);
     ~BoxFilter();
 
     bool apply();

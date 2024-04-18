@@ -1,19 +1,19 @@
 #include "AbstractFilter.hpp"
 
 AbstractFilter::AbstractFilter()
-: raw_image(new cv::Mat)
-, filtered_image(new cv::Mat)
+    : raw_image(new cv::Mat), filtered_image(new cv::Mat)
 {
 }
 
-AbstractFilter::AbstractFilter(const AbstractFilter& other)
-: raw_image(other.raw_image)
-, filtered_image(other.filtered_image)
+AbstractFilter::AbstractFilter(const AbstractFilter &other)
+    : raw_image(other.raw_image), filtered_image(other.filtered_image)
 {
 }
 
-AbstractFilter& AbstractFilter::operator=(const AbstractFilter& other) {
-    if(this != &other){
+AbstractFilter &AbstractFilter::operator=(const AbstractFilter &other)
+{
+    if (this != &other)
+    {
         this->raw_image = other.raw_image;
         this->filtered_image = other.filtered_image;
     }
@@ -21,7 +21,8 @@ AbstractFilter& AbstractFilter::operator=(const AbstractFilter& other) {
     return *this;
 }
 
-AbstractFilter::~AbstractFilter(){
+AbstractFilter::~AbstractFilter()
+{
     delete raw_image;
     delete filtered_image;
 }
@@ -29,7 +30,8 @@ AbstractFilter::~AbstractFilter(){
 bool AbstractFilter::read(std::string input)
 {
     *raw_image = cv::imread(input);
-    if (raw_image->empty()) {
+    if (raw_image->empty())
+    {
         std::cerr << "Error: Unable to load image" << std::endl;
         return false;
     }
@@ -39,7 +41,8 @@ bool AbstractFilter::read(std::string input)
 
 bool AbstractFilter::show()
 {
-    if (filtered_image->empty()) {
+    if (filtered_image->empty())
+    {
         std::cerr << "Error: image not filtered" << std::endl;
         return false;
     }
@@ -56,16 +59,17 @@ bool AbstractFilter::show()
 
 bool AbstractFilter::save(std::string output)
 {
-    if (filtered_image->empty()) {
+    if (filtered_image->empty())
+    {
         std::cerr << "Error: image not filtered" << std::endl;
         return false;
     }
 
-    if (cv::imwrite(output, *filtered_image)) {
+    if (cv::imwrite(output, *filtered_image))
+    {
         std::cerr << "Error: Failed to save the image" << std::endl;
         return false;
     }
 
     return true;
 }
-
