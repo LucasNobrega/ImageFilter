@@ -3,8 +3,8 @@ set(INCLUDES
 "${CMAKE_BINARY_DIR}/configured_files/include")
 
 add_executable(${EXE_NAME} ${EXE_SOURCES})
-target_include_directories(${EXE_NAME} PUBLIC ${INCLUDES})
-target_link_libraries(${EXE_NAME} PUBLIC ${LIB_IMAGE_FILTER_NAME} CLI11::CLI11)
+target_include_directories(${EXE_NAME} PRIVATE ${INCLUDES})
+target_link_libraries(${EXE_NAME} PRIVATE ${LIB_IMAGE_FILTER_NAME} CLI11::CLI11)
 
 if(${ENABLE_WARNINGS})
     target_set_warnings(

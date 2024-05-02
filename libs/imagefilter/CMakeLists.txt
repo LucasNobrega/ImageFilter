@@ -12,7 +12,9 @@ set(LIBRARY_SOURCES
     "SobelEdgeDetection/SobelEdgeDetectionFilter.cpp"
     "SobelEdgeDetection/SobelEdgeDetectionFilterCUDA.cu"
     "TotalVariation/TotalVariationFilter.cpp"
-    "TotalVariation/TotalVariationFilterCUDA.cu")
+    "TotalVariation/TotalVariationFilterCUDA.cu"
+    "GenericFilter/GenericFilter.cpp"
+    "GenericFilter/GenericFilterCUDA.cu")
 set(LIBRARY_HEADERS
     "Abstract/AbstractFilter.hpp"
     "Abstract/CUDARunTimeConfig.hpp"
@@ -28,7 +30,9 @@ set(LIBRARY_HEADERS
     "SobelEdgeDetection/SobelEdgeDetectionFilter.hpp"
     "SobelEdgeDetection/SobelEdgeDetectionFilterCUDA.hpp"
     "TotalVariation/TotalVariationFilter.hpp"
-    "TotalVariation/TotalVariationFilterCUDA.hpp")
+    "TotalVariation/TotalVariationFilterCUDA.hpp"
+    "GenericFilter/GenericFilter.hpp"
+    "GenericFilter/GenericFilterCUDA.hpp")
 
 set(LIBRARY_INCLUDES
     "./"
@@ -38,12 +42,12 @@ set(LIBRARY_INCLUDES
     "./Median"
     "./Sharpening"
     "./SobelEdgeDetection"
-    "./test"
-    "./TotalVariation")
+    "./TotalVariation"
+    "./GenericFilter")
 
 cuda_add_library(
     ${LIB_IMAGE_FILTER_NAME}
-    STATIC
+    SHARED
     ${LIBRARY_SOURCES}
     ${LIBRARY_HEADERS})
 target_include_directories(${LIB_IMAGE_FILTER_NAME} PUBLIC ${LIBRARY_INCLUDES})

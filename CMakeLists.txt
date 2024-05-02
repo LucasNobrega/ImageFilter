@@ -22,7 +22,9 @@ option(ENABLE_CMAKE_FORMAT "Enable to add cmake-format." ON)
 # Project / Lib names
 set(LIB_IMAGE_FILTER_NAME imagefilter)
 set(LIB_IMAGE_FILTER_TEST_NAME imagefilterTest)
+set(LIB_BENCHMARKER_NAME benchmarker)
 set(EXE_NAME ImageFilter_CUDA)
+set(BENCHMARKER_NAME Benchmarker)
 
 # CMake Modules
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/)
@@ -79,3 +81,4 @@ set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-O3 -gencode arch=compute_61,code=sm_61)
 add_subdirectory(configured)
 add_subdirectory(libs)
 add_subdirectory(app)
+add_subdirectory(benchmarker)

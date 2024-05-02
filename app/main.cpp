@@ -15,22 +15,26 @@
 #include "SobelEdgeDetectionFilterCUDA.hpp"
 #include "TotalVariationFilter.hpp"
 #include "TotalVariationFilterCUDA.hpp"
+#include "GenericFilter.hpp"
+#include "GenericFilterCUDA.hpp"
 
 
 int main(int argc, const char **argv)
 {
     CLI::App image_filter{"Command line parser"};
-    int filter = 6;        // Default value
-    bool use_cuda = false; // Default value
+    int filter = 6;        
+    bool use_cuda = false; 
+    std::string kernel_file = "../../kernels/boxFilter.txt";
+
     image_filter.add_option("-f,--filter", filter, "Filter");
     image_filter.add_flag("-c, --cuda", use_cuda, "Use CUDA");
+    image_filter.add_option("-k, --kernel", kernel_file, "Set generic filter's kernel");
     CLI11_PARSE(image_filter, argc, argv);
 
     std::cout << projectName << std::endl;
     std::cout << projectVersion << std::endl;
     std::cout << "Filter value: " << filter << std::endl;
     std::cout << "use cuda: " << use_cuda << std::endl;
-
 
     AbstractFilter *img_filter;
     if (!use_cuda)
@@ -54,6 +58,16 @@ int main(int argc, const char **argv)
             break;
         case 6:
             img_filter = new TotalVariationFilter();
+            break;
+        case 7:
+            std::cout << "kernel file: " << kernel_file << std::endl;
+
+            img_filter = new GenericFilter();
+            if(!dynamic_cast<GenericFilter *>(img_filter)->configureKernel(kernel_file)){
+                std::cerr << "Error: Unable to configure kernel" << std::endl;
+                return 1;
+            }
+
             break;
         default:
             img_filter = new BoxFilter();
@@ -87,6 +101,15 @@ int main(int argc, const char **argv)
             break;
         case 6:
             img_filter = new TotalVariationFilterCUDA(3, 3, cuda_config);
+            break;
+        case 7:
+            std::cout << "kernel file: " << kernel_file << std::endl;
+
+            img_filter = new GenericFilterCUDA(cuda_config);
+            if(!dynamic_cast<GenericFilterCUDA *>(img_filter)->configureKernel(kernel_file)){
+                std::cerr << "Error: Unable to configure kernel" << std::endl;
+                return 1;
+            }
             break;
         default:
             img_filter = new AbstractFilterCUDA(3, 3, cuda_config);

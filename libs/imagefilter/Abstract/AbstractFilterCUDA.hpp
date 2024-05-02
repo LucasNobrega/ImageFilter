@@ -25,16 +25,13 @@ public:
                                     unsigned int,
                                     int);
 
-private:
+protected:
     unsigned int filter_kernel_width;
     unsigned int filter_kernel_height;
     virtual void activate(cv::Mat *input, cv::Mat *output);
-    void configGrid();
-    bool checkCUDAConfig();
-
+    virtual void configGrid();
+    virtual bool checkCUDAConfig();
     CUDARunTimeConfig cuda_run_time_config;
-
-protected:
     cuda_kernel_ptr cuda_kernel;
 };
 

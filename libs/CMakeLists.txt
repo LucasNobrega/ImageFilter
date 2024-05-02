@@ -1,1 +1,2 @@
 add_subdirectory(imagefilter)
+add_subdirectory(benchmarker)
